@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Username:</strong>
+  <%= @login.username %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @login.email %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @login.password %>
+</p>
+
+<p>
+  <strong>Conformpassword:</strong>
+  <%= @login.conformpassword %>
+</p>
+
+<p>
+  <strong>Mobilenumber:</strong>
+  <%= @login.mobilenumber %>
+</p>
+
+<%= link_to 'Edit', edit_login_path(@login) %> |
+<%= link_to 'Back', logins_path %>
