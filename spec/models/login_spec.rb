@@ -1,7 +1,12 @@
 require 'rails_helper'
 
 
+
 RSpec.describe Login, type: :model do
+
+  subject {described_class.new(username: "honest", email: "Lorem@gmail.com",password:"jhkjjjh",conformpassword:"hjiiij",mobilenumber:"1")}
+
+
 
   context "Db column",:columncheck=>true do
     #db structure test
@@ -26,15 +31,31 @@ RSpec.describe Login, type: :model do
     it { should validate_uniqueness_of(:email) }
     it { should validate_confirmation_of(:password)}
     it { should validate_inclusion_of(:username).in_array(['honest','raj','veera','karthi','raja'])}
-    it { should validate_exclusion_of(:password).inarray(%w( 1234567890 123 12345))}
+    it { should validate_exclusion_of(:password).in_array(%w( 1234567890 123 12345))}
    end
     #association concepts
-  context "Association concept",:association=>true do
+  context "possiblity",:possiblity=>true do
+    it "is valid with valid attributes" do
+     expect(subject).to be_valid
+   end
+  end
 
+  context "Association",:association=>true do
+      #  it { should belong_to(:book) }
+      #  it { should belong_to(:author) }
+      #  it { should have_one(:book) }
+      #  it { should have_many(:author) }
 
   end
 
-
+    context "factory test",:factory=>true do
+      it "login data test" do
+        FactoryGirl.create(:login).should be_valid
+      end
+      # it "username test" do
+      #   FactoryGirl.bulid(:usern).should be_valid
+      # end
+    end
       # it "transactiona example1"  do
       #   expect(Login.count).to eq 0
       # end
